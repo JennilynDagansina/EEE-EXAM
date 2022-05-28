@@ -5,7 +5,7 @@ from tkinter import *
 import time
 
 class StopWatch(Frame):  
-    # Executes a stop watch frame widget.                                                                 
+    # Execute a stop watch frame widget.                                                                 
     def __init__(self, parent=None, **kw):        
         Frame.__init__(self, parent, kw)
         self._start = 0.0        
