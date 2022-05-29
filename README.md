@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import time
 
+
 class StopWatch(Frame):  
     """ Implements a stop watch frame widget. """                                                                
     def __init__(self, parent=None, **kw):        
@@ -28,7 +29,7 @@ class StopWatch(Frame):
         self._setTime(self._elapsedtime)
         watch.pack(fill=X, expand=YES, pady=3, padx=2)
         
-        name = Label(self, text= '            hours          minutes        seconds       centisec.       ', font=('Arial', 8, fg='white', bg='black')
+        name = Label(self, text= '            hours          minutes        seconds       centisec.       ', font=('Arial', 8), fg='white', bg='black')
         name.pack(fill='x', expand='yes')
 
         lap = Label(self, text='Laps')
@@ -118,4 +119,13 @@ def main():
 
 
     Button(root, text='Start', height=5, width=12, fg=('green'), command=sw.Start).pack(fill=X, expand=YES, pady=3, padx=2, side=LEFT, anchor=CENTER)
-    Button(root, text='Stop', height=5, width=12, fg=('red'), command=sw.Stop).pack(fill=X, expand=YES, pady=3
+    Button(root, text='Stop', height=5, width=12, fg=('red'), command=sw.Stop).pack(fill=X, expand=YES, pady=3, padx=2, side=LEFT, anchor=CENTER)
+    Button(root, text='Lap', height=5, width=12, fg=('black'), command=sw.Lap).pack(fill=X, expand=YES, pady=3, padx=2, side=LEFT, anchor=CENTER)
+    Button(root, text='Reset', height=5, width=12, fg=('black'), command=sw.Reset).pack(fill=X, expand=YES, pady=3, padx=2, side=LEFT, anchor=CENTER)
+    Button(root, text='Exit App',height=3, width=12, command=sw.ExitApp).pack(fill=X, expand=NO, pady=3, padx=2,anchor=CENTER, side=LEFT)
+    
+    root.mainloop()
+
+if __name__ == '__main__':
+    main()
+    
