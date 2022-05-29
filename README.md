@@ -21,21 +21,21 @@ class StopWatch(Frame):
         
     def makeWidgets(self):                         
         """ Stopwatch Label """
-        title = Label(self, text='Stopwatch', font=('Arial', 10))
-        title.pack(fill=X, expand=NO, pady=1, padx=2)
+        title = Label(self, text='Stopwatch', font=('Arial', 20))
+        title.pack(fill=X, expand=YES, pady=1, padx=2)
         
-        watch = Label(self, textvariable=self.timestr, font=('Arial', 16), bg=('black'), fg=('white'))
+        watch = Label(self, textvariable=self.timestr, font=('Arial', 32), bg=('black'), fg=('white'))
         self._setTime(self._elapsedtime)
-        watch.pack(fill=X, expand=NO, pady=3, padx=2)
+        watch.pack(fill=X, expand=YES, pady=3, padx=2)
         
-        name = Label(self, text= '           hours            minutes          seconds         centisec.       ', font=('Arial', 4), fg='white', bg='black')
-        name.pack(fill='x', expand='no')
+        name = Label(self, text= '            hours          minutes        seconds       centisec.       ', font=('Arial', 8, fg='white', bg='black')
+        name.pack(fill='x', expand='yes')
 
         lap = Label(self, text='Laps')
-        lap.pack(fill=X, expand=NO, pady=4, padx=2)
+        lap.pack(fill=X, expand=YES, pady=4, padx=2)
 
         scrollbar = Scrollbar(self, orient=VERTICAL)
-        self.listbox = Listbox(self,selectmode=EXTENDED, height = 5, yscrollcommand=scrollbar.set)
+        self.listbox = Listbox(self,selectmode=EXTENDED, height = 8, yscrollcommand=scrollbar.set)
         self.listbox.pack(side=LEFT, fill=BOTH, expand=1, pady=5, padx=2)
         scrollbar.config(command=self.listbox.yview)
         scrollbar.pack(side=RIGHT, fill=Y)
@@ -107,21 +107,15 @@ class StopWatch(Frame):
         file = str(self.e.get()) + ' - '
         with open(file + self.today + '.txt', 'wb') as lapfile:
             for lap in self.laps:
-                lapfile.write((bytes(str(lap) + '\n', 'utf-8')))
+                lapfile.write((bytes(str(lap) + '\n', 'utf-8', font=('Arial', 20))))
             
 def main():
     root = Tk()
     root.wm_attributes("-topmost", 1)      #always on top - might do a button for it
+    root.geometry('485x450')
     sw = StopWatch(root)
     sw.pack(side=TOP)
 
-    Button(root, text='Start', height=3, width=4, fg=('green'), bg=('black'), command=sw.Start).pack(side=LEFT)
-    Button(root, text='Stop', height=3, width=4, fg=('red'), bg=('black'), command=sw.Stop).pack(side=LEFT)
-    Button(root, text='Lap', height=3, width=4, fg=('yellow'), bg=('black'), command=sw.Lap).pack(side=LEFT)
-    Button(root, text='Reset', height=3, width=4, fg=('cyan'), bg=('black'), command=sw.Reset).pack(side=LEFT)
-    Button(root, text='Exit App',command=sw.ExitApp).pack(side=BOTTOM)
-    
-    root.mainloop()
 
-if __name__ == '__main__':
-    main()
+    Button(root, text='Start', height=5, width=12, fg=('green'), command=sw.Start).pack(fill=X, expand=YES, pady=3, padx=2, side=LEFT, anchor=CENTER)
+    Button(root, text='Stop', height=5, width=12, fg=('red'), command=sw.Stop).pack(fill=X, expand=YES, pady=3
