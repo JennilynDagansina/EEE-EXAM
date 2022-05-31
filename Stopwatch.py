@@ -21,7 +21,7 @@ class StopWatch(Frame):
         self.today = time.strftime("%d %b %Y %H-%M-%S", time.localtime())
         
     def makeWidgets(self):                         
-        """ Stopwatch Label """
+        """ Labeling a Stopwatch """
         title = Label(self, text='Stopwatch', font=('Arial', 20))
         title.pack(fill=X, expand=YES, pady=1, padx=2)
         
